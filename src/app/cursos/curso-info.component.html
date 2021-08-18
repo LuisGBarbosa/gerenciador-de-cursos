@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<h2>Informações do Curso</h2>
+<hr/>
+<form #cursoForm="ngForm" *ngIf="curso">
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="curso.name" required name="name" #cursoName="ngModel" [ngClass]="{'is-invalid': cursoName.invalid}" class="form-control">
+
+            <div class="invalid-feedback">
+                <span>O nome do curso é obrigatório.</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Preço:</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="curso.price" required name="preco" #cursoPrice="ngModel" type="number" [ngClass]="{'is-invalid': cursoPrice.invalid}" class="form-control">
+
+            <div class="invalid-feedback">
+                <span>O preço do curso é obrigatório.</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Avaliação:</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="curso.rating" required name="avaliacao" #cursoRating="ngModel" type="number" 
+            [ngClass]="{'is-invalid': cursoRating.invalid}" class="form-control">
+
+            <div class="invalid-feedback">
+                <span>A avaliação do curso é obrigatória.</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Descrição:</label>
+        <div class="col-sm-10">
+            <textarea [(ngModel)]="curso.description" required name="descricao" #cursoDescription="ngModel" 
+            [ngClass]="{'is-invalid': cursoDescription.invalid}" class="form-control"></textarea>
+
+            <div class="invalid-feedback">
+                <span>A avaliação do curso é obrigatória.</span>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <button [disabled]="cursoForm.invalid" (click)="save()" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['/cursos']" class="btn btn-secondary">Voltar</button>
+</form>
